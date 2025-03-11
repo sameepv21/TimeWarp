@@ -8,6 +8,7 @@ This repository will provide access to the dataset, pretrained checkpoints, infe
 - [ ] Release timewarp data generation script
 - [ ] Release checkpoints for LLaVA-Hound and Video-LLaMA3
 - [ ] Release training, evaluation, and inference code
+- [ ] Replace citation and links with the original one
 
 # Checkpoints
 
