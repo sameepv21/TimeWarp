@@ -1,107 +1,85 @@
-# Harnessing Synthetic Preference Data for Enhancing Temporal Understanding of Video-LLMs
+# TimeWarp: Harnessing Synthetic Preference Data for Enhancing Temporal Understanding of Video-LLMs
+
+<div align="center">
+
+[![arXiv](https://img.shields.io/badge/arXiv-2024.XXXXX-b31b1b.svg?style=flat-square)](https://arxiv.org/abs/2024.XXXXX)
+[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Models-blue?style=flat-square)](https://huggingface.co/time-warp)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 
 ![Pipeline Overview](img/pipeline.png)
 
-This repository provides the dataset generation tools, pretrained checkpoints, and training code for TimeWarp - a framework for enhancing temporal understanding in Video-LLMs through synthetic preference data.
+</div>
 
-## 📋 Status
+A framework for enhancing temporal understanding in Video-LLMs through synthetic preference data generation and training.
 
-- ✅ TimeWarp data generation scripts released
-- ⏳ Checkpoints for LLaVA-Hound and Video-LLaMA3 (coming soon)
-- ⏳ Training, evaluation, and inference code (coming soon)
-- ⏳ Official citation and links (coming soon)
 
-## 🚀 Quick Start
+## 🚀 Installation
 
-### Prerequisites
-- Python 3.8+
-- Required packages: `pandas`, `tqdm`, `opencv-python`, `moviepy`, `openai`
-
-### Dataset Setup
-
-#### Option 1: Download Preprocessed Data
-Download the preprocessed frames directly from [LINK] (coming soon)
-
-#### Option 2: Generate from Scratch
-
-1. **Download FineVideo Dataset**
-   ```bash
-   # Download from HuggingFace
-   # https://huggingface.co/HuggingFaceFV/finevideo
-   ```
-
-2. **Run Preprocessing Pipeline**
-   ```bash
-   # Make scripts executable
-   chmod +x setup_dataset.sh generate_data.sh
-   
-   # Run preprocessing (creates normal and shuffled videos)
-   ./setup_dataset.sh path/to/finevideo path/to/output 5000
-   
-   # Generate preference data and benchmarks
-   ./generate_data.sh path/to/output
-   ```
-
-### Manual Commands (Alternative)
-
-If you prefer to run commands individually:
-
-**Preprocessing:**
 ```bash
-python timewarp/preprocess/preprocess.py --root_dir <finevideo_path> --save_dir <output_path> --scale 5000
-python timewarp/preprocess/filter_corrupted.py --root_dir <output_path>
-python timewarp/preprocess/final_assertions.py --root_dir <output_path>
-python timewarp/preprocess/shuffle_clips.py --root_dir <output_path>
+git clone https://github.com/yourusername/TimeWarp.git
+cd TimeWarp
+pip install -r requirements.txt
 ```
 
-**Data Generation:**
-```bash
-python timewarp/pref_data/merge_normal_captions.py --root_dir <output_path>
-python timewarp/pref_data/merge_shuffled_captions.py --root_dir <output_path>
-python timewarp/pref_data/generate_sft_explicit.py --root_dir <output_path>
-python timewarp/pref_data/generate_pref_explicit.py --root_dir <output_path> \
-    --shuffled_dir_name shuffled \
-    --annotation_dir_name shuffled_annotations \
-    --video_dir_name shuffled_videos
-python timewarp/benchmark/generate_normal_benchmark.py --root_dir <output_path>
-python timewarp/benchmark/generate_shuffled_benchmark.py --root_dir <output_path>
-```
+## 📦 Dataset Setup
 
-## 📊 Model Checkpoints
+### Option 1: Download Preprocessed Data
+[![Hugging Face Dataset](https://img.shields.io/badge/%F0%9F%A4%97%20Dataset-TimeWarp-orange?style=flat-square)](https://huggingface.co/datasets/time-warp/timewarp-data)
 
-| Method | LLaVA-Hound | Video-LLaMA3 | InternVideo |
-|--------|-------------|--------------|-------------|
-| SFT | [Coming Soon](#) | [Coming Soon](#) | [Coming Soon](#) |
-| Base-DPO | [Coming Soon](#) | [Coming Soon](#) | [Coming Soon](#) |
-| Combined (ours) | [Coming Soon](#) | [Coming Soon](#) | [Coming Soon](#) |
-| TimeWarp-Implicit | [Coming Soon](#) | [Coming Soon](#) | [Coming Soon](#) |
-| TimeWarp-Explicit | [Coming Soon](#) | [Coming Soon](#) | [Coming Soon](#) |
+### Option 2: Generate from Scratch
 
-## 📁 Repository Structure
+1. Download the [FineVideo Dataset](https://huggingface.co/HuggingFaceFV/finevideo)
+2. Run the preprocessing pipeline:
+   ```bash
+   chmod +x scripts/*.sh
+   ./scripts/setup_dataset.sh path/to/finevideo path/to/output 5000
+   ./scripts/generate_data.sh path/to/output
+   ```
+
+## 🎯 Training & Evaluation
+
+### Training
+Refer to `dpo_scripts/train_dpo.sh` for DPO training configurations.
+
+### Evaluation
+Evaluation scripts are available in the `test/` directory for various benchmarks including MVBench, TempCompass, and our TimeWarp benchmarks.
+
+## 📁 Project Structure
 
 ```
 TimeWarp/
-├── setup_dataset.sh      # Preprocessing pipeline
-├── generate_data.sh       # Data generation pipeline
-└── timewarp/
-    ├── preprocess/        # Video preprocessing scripts
-    ├── pref_data/         # Preference data generation
-    └── benchmark/         # Benchmark generation
+├── 📂 timewarp/           # Core data generation modules
+│   ├── preprocess/        # Video preprocessing
+│   ├── pref_data/         # Preference data generation
+│   └── benchmark/         # Benchmark creation
+├── 📂 dpo_scripts/        # DPO training scripts
+├── 📂 llava/              # Model implementations
+├── 📂 test/               # Evaluation pipelines
+├── 📂 inference/          # Inference utilities
+└── 📂 scripts/            # Setup and generation scripts
 ```
 
 ## 📚 Citation
 
-If you find TimeWarp useful, please cite:
+If you find our work helpful, please consider citing:
 
 ```bibtex
 @article{timewarp2024,
-    title={TimeWarp: Enhancing Temporal Understanding of Video-LLMs},
-    author={Author names},
-    journal={Conference/Journal},
+    title={Harnessing Synthetic Preference Data for Enhancing Temporal Understanding of Video-LLMs},
+    author={Your Name et al.},
+    journal={arXiv preprint arXiv:2024.XXXXX},
     year={2024}
 }
 ```
 
+## 🤝 Contributing
+
+We welcome contributions! Please feel free to submit pull requests or open issues for bug reports and feature requests.
+
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+We thank the authors of LLaVA-Hound, Video-LLaMA3, and FineVideo for their foundational work.
