@@ -77,8 +77,8 @@ def eval_model(args, model_dict):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--model_path", type=str, default='DAMO-NLP-SG/VideoLLaMA3-7B')
-    parser.add_argument("--video_dir", type=str, default="/home/cr8dl-user/sameep/datasets/timewarp/llava_hound_frames")
-    parser.add_argument("--save_dir", type=str, default="/home/cr8dl-user/sameep/datasets/timewarp/stic_vl3_pref.json")
+    parser.add_argument("--video_dir", type=str, default="./datasets/timewarp/llava_hound_frames")
+    parser.add_argument("--save_dir", type=str, default="./datasets/timewarp/stic_vl3_pref.json")
     parser.add_argument("--video_file", type=str, default=None)
     parser.add_argument("--query", type=str, default="Describe the Video.")
     parser.add_argument("--temperature", type=float, default=0.0)
@@ -104,10 +104,10 @@ if __name__ == "__main__":
 
     response_dicts = []
 
-    with open('/home/cr8dl-user/sameep/datasets/llava-hound/sft_dpo_17k.jsonl', 'r') as f:
+    with open('./datasets/llava-hound/sft_dpo_17k.jsonl', 'r') as f:
         video_data = [json.loads(line) for line in f]
     
-    with open('/home/cr8dl-user/sameep/datasets/timewarp/stic_lh_pref.json', 'r') as f:
+    with open('./datasets/timewarp/stic_lh_pref.json', 'r') as f:
         frame_corruption_data = json.load(f)
 
     for idx, video_info in tqdm(enumerate(video_data)):
@@ -116,13 +116,13 @@ if __name__ == "__main__":
         args.video_file = video_id
 
         # For preferred output, use the original frames
-        args.video_dir = "/home/cr8dl-user/sameep/datasets/timewarp/llava_hound_frames"
+        args.video_dir = "./datasets/timewarp/llava_hound_frames"
 
         # Compute preferred response
         preferred_output = eval_model(args, model_dict)
 
         # For dispreferred output, use the corrupted frames
-        args.video_dir = "/home/cr8dl-user/sameep/datasets/timewarp/stic_lh_frames"
+        args.video_dir = "./datasets/timewarp/stic_lh_frames"
         
         hallu_prompt = ""
         prompt = random.choice(prompt_list)

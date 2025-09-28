@@ -4,13 +4,13 @@ model_base="None"
 load_peft="None"
 
 data_name=timewar_shuffled
-TEST_DATA_DIR=/home/cr8dl-user/sameep/datasets/timewarp
-TEST_RESULT_DIR=/home/cr8dl-user/sameep/evaluation/${data_name}/${output_model_name}
+TEST_DATA_DIR=./datasets/timewarp
+TEST_RESULT_DIR=./evaluation/${data_name}/${output_model_name}
 
 data_path=$TEST_DATA_DIR/shuffled_temporal_benchmark_sampled.json
 output_path=$TEST_RESULT_DIR/${data_name}/inference_test_official
 
-cache_dir=/home/cr8dl-user/.cache
+cache_dir=~/.cache
 VIDEO_DATA_DIR=$TEST_DATA_DIR
 
 bash test/inference/inference_test_qa.sh \

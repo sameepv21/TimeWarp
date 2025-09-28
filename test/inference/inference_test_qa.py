@@ -75,7 +75,7 @@ def main(model_path, base_model_path, data_path, output_dir, output_name, chunk_
     processor = AutoProcessor.from_pretrained(model_path, trust_remote_code=True)
     # tokenizer = AutoTokenizer.from_pretrained(
     #     model_path,
-    #     cache_dir='/home/cr8dl-user/.cache', # Change based on your location FIXME
+    #     cache_dir='~/.cache', # Change based on your location FIXME
     #     use_fast=False,
     # )
     # tokenizer, model, processor, context_len = load_pretrained_model(model_path, base_model_path, model_name, device_map={"":0})

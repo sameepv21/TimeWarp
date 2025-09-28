@@ -319,28 +319,28 @@ class EvalDataset(Dataset):
 class MVBenchDataset(EvalDataset):
     data_list_info = {
         # "task_type (sub task name)": ("json file name", "image/video prefix", "data_type", "bound")
-        "Action Sequence": ("action_sequence.json", "/home/cr8dl-user/sameep/datasets/mvbench/video/star/Charades_v1_480/", "video", True), # has start & end
-        "Action Prediction": ("action_prediction.json", "/home/cr8dl-user/sameep/datasets/mvbench/video/star/Charades_v1_480/", "video", True), # has start & end
-        "Action Antonym": ("action_antonym.json", "/home/cr8dl-user/sameep/datasets/mvbench/video/ssv2_video/", "video", False),
-        "Fine-grained Action": ("fine_grained_action.json", "/home/cr8dl-user/sameep/datasets/mvbench/video/Moments_in_Time_Raw/videos/", "video", False),
-        "Unexpected Action": ("unexpected_action.json", "/home/cr8dl-user/sameep/datasets/mvbench/video/FunQA_test/test/", "video", False),
-        "Object Existence": ("object_existence.json", "/home/cr8dl-user/sameep/datasets/mvbench/video/clevrer/video_validation/", "video", False),
-        "Object Interaction": ("object_interaction.json", "/home/cr8dl-user/sameep/datasets/mvbench/video/star/Charades_v1_480/", "video", True), # has start & end
-        "Object Shuffle": ("object_shuffle.json", "/home/cr8dl-user/sameep/datasets/mvbench/video/perception/videos/", "video", False),
-        "Moving Direction": ("moving_direction.json", "/home/cr8dl-user/sameep/datasets/mvbench/video/clevrer/video_validation/", "video", False),
-        "Action Localization": ("action_localization.json", "/home/cr8dl-user/sameep/datasets/mvbench/video/sta/sta_video/", "video", True),  # has start & end
-        "Scene Transition": ("scene_transition.json", "/home/cr8dl-user/sameep/datasets/mvbench/video/scene_qa/video/", "video", False),
-        "Action Count": ("action_count.json", "/home/cr8dl-user/sameep/datasets/mvbench/video/perception/videos/", "video", False),
-        "Moving Count": ("moving_count.json", "/home/cr8dl-user/sameep/datasets/mvbench/video/clevrer/video_validation/", "video", False),
-        "Moving Attribute": ("moving_attribute.json", "/home/cr8dl-user/sameep/datasets/mvbench/video/clevrer/video_validation/", "video", False),
-        "State Change": ("state_change.json", "/home/cr8dl-user/sameep/datasets/mvbench/video/perception/videos/", "video", False),
-        "Fine-grained Pose": ("fine_grained_pose.json", "/home/cr8dl-user/sameep/datasets/mvbench/video/nturgbd/", "video", False),
-        "Character Order": ("character_order.json", "/home/cr8dl-user/sameep/datasets/mvbench/video/perception/videos/", "video", False),
-        "Egocentric Navigation": ("egocentric_navigation.json", "/home/cr8dl-user/sameep/datasets/mvbench/video/vlnqa/", "video", False),
-        "Episodic Reasoning": ("episodic_reasoning.json", "/home/cr8dl-user/sameep/datasets/mvbench/video/tvqa/frames_fps3_hq/", "frame", True),  # has start & end, read frame
-        "Counterfactual Inference": ("counterfactual_inference.json", "/home/cr8dl-user/sameep/datasets/mvbench/video/clevrer/video_validation/", "video", False),
+        "Action Sequence": ("action_sequence.json", "./datasets/mvbench/video/star/Charades_v1_480/", "video", True), # has start & end
+        "Action Prediction": ("action_prediction.json", "./datasets/mvbench/video/star/Charades_v1_480/", "video", True), # has start & end
+        "Action Antonym": ("action_antonym.json", "./datasets/mvbench/video/ssv2_video/", "video", False),
+        "Fine-grained Action": ("fine_grained_action.json", "./datasets/mvbench/video/Moments_in_Time_Raw/videos/", "video", False),
+        "Unexpected Action": ("unexpected_action.json", "./datasets/mvbench/video/FunQA_test/test/", "video", False),
+        "Object Existence": ("object_existence.json", "./datasets/mvbench/video/clevrer/video_validation/", "video", False),
+        "Object Interaction": ("object_interaction.json", "./datasets/mvbench/video/star/Charades_v1_480/", "video", True), # has start & end
+        "Object Shuffle": ("object_shuffle.json", "./datasets/mvbench/video/perception/videos/", "video", False),
+        "Moving Direction": ("moving_direction.json", "./datasets/mvbench/video/clevrer/video_validation/", "video", False),
+        "Action Localization": ("action_localization.json", "./datasets/mvbench/video/sta/sta_video/", "video", True),  # has start & end
+        "Scene Transition": ("scene_transition.json", "./datasets/mvbench/video/scene_qa/video/", "video", False),
+        "Action Count": ("action_count.json", "./datasets/mvbench/video/perception/videos/", "video", False),
+        "Moving Count": ("moving_count.json", "./datasets/mvbench/video/clevrer/video_validation/", "video", False),
+        "Moving Attribute": ("moving_attribute.json", "./datasets/mvbench/video/clevrer/video_validation/", "video", False),
+        "State Change": ("state_change.json", "./datasets/mvbench/video/perception/videos/", "video", False),
+        "Fine-grained Pose": ("fine_grained_pose.json", "./datasets/mvbench/video/nturgbd/", "video", False),
+        "Character Order": ("character_order.json", "./datasets/mvbench/video/perception/videos/", "video", False),
+        "Egocentric Navigation": ("egocentric_navigation.json", "./datasets/mvbench/video/vlnqa/", "video", False),
+        "Episodic Reasoning": ("episodic_reasoning.json", "./datasets/mvbench/video/tvqa/frames_fps3_hq/", "frame", True),  # has start & end, read frame
+        "Counterfactual Inference": ("counterfactual_inference.json", "./datasets/mvbench/video/clevrer/video_validation/", "video", False),
     }
-    data_dir = "/home/cr8dl-user/sameep/datasets/mvbench/json"
+    data_dir = "./datasets/mvbench/json"
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

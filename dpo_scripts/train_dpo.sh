@@ -1,15 +1,14 @@
 input_model_name=${1:-"DAMO-NLP-SG/VideoLLaMA3-7B"}
-output_model_name=${2:-"/home/cr8dl-user/sameep/experiments/videollama3_lp_combined"}
+output_model_name=${2:-"./experiments/videollama3_lp_combined"}
 lr=${3:-"5e-7"}
 
-cache_dir=/home/cr8dl-user/.cache
+cache_dir=~/.cache
 export cache_dir=$cache_dir
 
 # export WANDB_MODE=disabled
 export WANDB_PROJECT=video-llama3
 export WANDB_NAME=video-llama3-ft
 
-# gpu_ids=0
 gpu_ids=3,4,5,6,7
 export CUDA_VISIBLE_DEVICES=$gpu_ids
 n_gpu=$(echo $gpu_ids | tr "," "\n" | wc -l)
@@ -20,19 +19,19 @@ output_dir=$output_model_name
 mkdir -p $output_dir
 
 # DATA
-data_path=/home/cr8dl-user/sameep/datasets/timewarp/timewarp_combined_vl3_30k_frames.json
+data_path=./datasets/timewarp/timewarp_combined_vl3_30k_frames.json
 
-video_dir=/home/cr8dl-user/sameep/datasets/timewarp
+video_dir=./datasets/timewarp
 image_dir="/"
 
 # sudo chmod +x -R .
-export PYTHONPATH="/home/cr8dl-user/arpit/miniforge3/envs/vl3_new/bin/python"
+export PYTHONPATH="./envs/vl3_new/bin/python"
 rand=$RANDOM
 port=$((19000 + $rand % 1000))
 
 # python -m dpo_scripts.run_dpo \
 torchrun --nproc_per_node=$n_gpu --master_port=$port -m dpo_scripts.run_dpo \
-    --deepspeed /home/cr8dl-user/sameep/Video-LLMs/finetune_all/video-llama3/zero2.json \
+    --deepspeed ./Video-LLMs/finetune_all/video-llama3/zero2.json \
     --lora_enable True --lora_r 128 --lora_alpha 256 --mm_projector_lr 2e-5 \
     --model_name_or_path $model_name_or_path \
     --dpo_alpha 1.0 --beta 0.1 --gamma 0 \

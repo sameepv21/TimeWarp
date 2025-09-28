@@ -1,16 +1,16 @@
 output_model_name=llava-hound-dpob
 model_path=ShareGPTVideo/LLaVA-Hound-SFT
 model_base="None"
-load_peft=/home/cr8dl-user/sameep/experiments/llava_hound_dpo_v2
+load_peft=./experiments/llava_hound_dpo_v2
 
 data_name=mvbench
-TEST_DATA_DIR=/home/cr8dl-user/sameep/datasets/llava-hound
-TEST_RESULT_DIR=/home/cr8dl-user/sameep/evaluation/${data_name}/llava_hound_dpob
+TEST_DATA_DIR=./datasets/llava-hound
+TEST_RESULT_DIR=./evaluation/${data_name}/llava_hound_dpob
 
 data_path=$TEST_DATA_DIR/mv_bench.json
 output_path=$TEST_RESULT_DIR/${data_name}/inference_test_official
 
-cache_dir=/home/cr8dl-user/.cache
+cache_dir=~/.cache
 VIDEO_DATA_DIR=$TEST_DATA_DIR
 
 bash test/inference/inference_test_qa.sh \

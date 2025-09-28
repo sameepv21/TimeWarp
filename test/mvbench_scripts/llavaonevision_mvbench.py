@@ -230,7 +230,7 @@ def run(rank, world_size):
     #                 conv_mode=args.conv_mode)
     #     logger.info('single test done...')
     
-    output_dir = f"/home/cr8dl-user/sameep/evaluation/{dataset_name}/{model_name}/results"
+    output_dir = f"./evaluation/{dataset_name}/{model_name}/results"
     os.makedirs(output_dir, exist_ok=True)
     
     tbar = tqdm(total=len(dataset))
@@ -298,7 +298,7 @@ def main():
     multiprocess=True
     mp.set_start_method('spawn')
     # args = parse_args()
-    save_path = f"/home/cr8dl-user/sameep/evaluation/{dataset_name}/{model_name}"
+    save_path = f"./evaluation/{dataset_name}/{model_name}"
     json_data = load_results(save_path)
     if json_data is None:
         if multiprocess:
