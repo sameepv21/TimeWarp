@@ -64,17 +64,18 @@ TimeWarp/
 If you find our work helpful, please consider citing:
 
 ```bibtex
-@article{timewarp2024,
+Coming Soon
+```
+<!-- @article{timewarp2024,
     title={Harnessing Synthetic Preference Data for Enhancing Temporal Understanding of Video-LLMs},
     author={Your Name et al.},
     journal={arXiv preprint arXiv:2024.XXXXX},
     year={2024}
-}
-```
+} -->
 
 ## 🤝 Contributing
 
-We welcome contributions! Please feel free to submit pull requests or open issues for bug reports and feature requests.
+We welcome contributions! Please feel free to submit pull requests or open issues for bug reports and potential issues.
 
 ## 📄 License
 
