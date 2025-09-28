@@ -1,0 +1,11 @@
+# Core dependencies
+pandas>=1.5.0
+numpy>=1.21.0
+tqdm>=4.65.0
+
+# Video processing
+opencv-python>=4.7.0
+moviepy>=1.0.3
+
+# API integration
+openai>=1.0.0
