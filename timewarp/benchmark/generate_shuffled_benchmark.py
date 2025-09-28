@@ -3,8 +3,6 @@ from openai import OpenAI
 from tqdm import tqdm
 import json
 import argparse
-from pprint import pprint
-import tiktoken
 
 def parse_args():
     parser = argparse.ArgumentParser()

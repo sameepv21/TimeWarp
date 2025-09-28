@@ -14,7 +14,6 @@ args = parse_args()
 prompt_template = "Task Instructions: Given a caption that summarizes the events in the video, generate three question-answer pairs that relate directly to the temporal information provided in the events. Make sure to ground the question to temporal understanding of the video content by including the words like 'beginning or end of the video', 'after', 'before' etc.\n\nGuidelines for QA Generation:\n\n1. Helpfulness: Answers should provide sufficient detail and depth to fully address the question. They should include relevant explanations, or context where appropriate to enhance temporal understanding.\n\n2. Faithfulness: The answers must accurately reflect the information presented in the video caption. Avoid speculation or the inclusion of the information not contained or implied by the caption to maintain the integrity of the content.\n\n3. Diversity: Craft questions that cover different temporal aspects of the video captions to provide a comprehensive understanding of the temporal context.\n\nInput Video Caption: {}\n\nOutput Format:\nQ1: <question1>\nA1: <answer1>\nQ2: <question2>\nA2: <answer2>\nQ3: <question3>\nA3: <answer3>"
 
 qa_dicts_all = []
-count = 0
 
 for filename in tqdm(sorted(os.listdir(os.path.join(args.root_dir, "normal_annotations")))):
     annotation_file_path = os.path.join(args.root_dir, "normal_annotations", filename)
@@ -74,7 +73,6 @@ for filename in tqdm(sorted(os.listdir(os.path.join(args.root_dir, "normal_annot
         },
     ]
 
-    count += 1
     qa_dicts_all.extend(qa_dicts)
 
 # Save the list of dictionaries as a json file

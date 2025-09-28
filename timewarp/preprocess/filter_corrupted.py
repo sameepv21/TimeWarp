@@ -1,7 +1,5 @@
 import os
 import cv2
-import random
-import shutil
 from tqdm import tqdm
 import time
 import argparse

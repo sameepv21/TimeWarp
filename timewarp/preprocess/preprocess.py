@@ -2,8 +2,6 @@ import pandas as pd
 import json
 from tqdm import tqdm
 import os
-from pprint import pprint
-import random
 from moviepy.editor import VideoFileClip, concatenate_videoclips
 import time
 import argparse

@@ -3,7 +3,6 @@ from openai import OpenAI
 from tqdm import tqdm
 import json
 import argparse
-from pprint import pprint
 
 def parse_args():
     parser = argparse.ArgumentParser()

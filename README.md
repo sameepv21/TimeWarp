@@ -1,62 +1,107 @@
 # Harnessing Synthetic Preference Data for Enhancing Temporal Understanding of Video-LLMs
 
-![Teaser Image](img/pipeline.png)
+![Pipeline Overview](img/pipeline.png)
 
-This repository will provide access to the dataset, pretrained checkpoints, inference, and the training code for our paper, TimeWarp. We provide our training scripts with modified versions taking from [LLaVA-Hound](https://github.com/RifleZhang/LLaVA-Hound-DPO) as the backbone for easy reproducibility.
+This repository provides the dataset generation tools, pretrained checkpoints, and training code for TimeWarp - a framework for enhancing temporal understanding in Video-LLMs through synthetic preference data.
 
-# TODOs:
-- [x] Release timewarp data generation script
-- [ ] Release checkpoints for LLaVA-Hound and Video-LLaMA3
-- [ ] Release training, evaluation, and inference code
-- [ ] Replace citation and links with the original one
+## 📋 Status
 
-# Dataset
-> You can directly download the raw frames used for finetuning at LINK or follow the below steps to set it up from scratch
-* Download the raw FineVideo Dataset from [HuggingFaceFV/FineVideo](https://huggingface.co/HuggingFaceFV/finevideo)
-* Once downloaded, run the below commands to preprocess the dataset.
+- ✅ TimeWarp data generation scripts released
+- ⏳ Checkpoints for LLaVA-Hound and Video-LLaMA3 (coming soon)
+- ⏳ Training, evaluation, and inference code (coming soon)
+- ⏳ Official citation and links (coming soon)
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Python 3.8+
+- Required packages: `pandas`, `tqdm`, `opencv-python`, `moviepy`, `openai`
+
+### Dataset Setup
+
+#### Option 1: Download Preprocessed Data
+Download the preprocessed frames directly from [LINK] (coming soon)
+
+#### Option 2: Generate from Scratch
+
+1. **Download FineVideo Dataset**
+   ```bash
+   # Download from HuggingFace
+   # https://huggingface.co/HuggingFaceFV/finevideo
+   ```
+
+2. **Run Preprocessing Pipeline**
+   ```bash
+   # Make scripts executable
+   chmod +x setup_dataset.sh generate_data.sh
+   
+   # Run preprocessing (creates normal and shuffled videos)
+   ./setup_dataset.sh path/to/finevideo path/to/output 5000
+   
+   # Generate preference data and benchmarks
+   ./generate_data.sh path/to/output
+   ```
+
+### Manual Commands (Alternative)
+
+If you prefer to run commands individually:
+
+**Preprocessing:**
 ```bash
-python timewarp/preprocess/preprocess.py --root_dir path_to_finevideo_data --save_dir path_to_saving_videos --scale 5k
-
-python timewarp/preprocess/filter_corrupted.py --root_dir path_to_saved_root_dir
-
-python timewarp/preprocess/final_assertions.py --root_dir path_to_saved_root_dir
-
-python timewarp/preprocess/shuffle_clips.py --root_dir path_to_saved_root_dir
+python timewarp/preprocess/preprocess.py --root_dir <finevideo_path> --save_dir <output_path> --scale 5000
+python timewarp/preprocess/filter_corrupted.py --root_dir <output_path>
+python timewarp/preprocess/final_assertions.py --root_dir <output_path>
+python timewarp/preprocess/shuffle_clips.py --root_dir <output_path>
 ```
-* After preprocessing, below commands will generate question answering pairs for preference data and MCQs for the benchmark (TimeWar).
+
+**Data Generation:**
 ```bash
-python timewarp/pref_data/merge_normal_captions.py --root_dir path_to_saved_root_dir
-
-python timewarp/pref_data/merge_shuffled_captions.py --root_dir path_to_saved_root_dir
-
-python timewarp/pref_data/generate_sft_explicit.py --root_dir path_to_saved_root_dir
-
-python timewarp/pref_data/generate_pref_explicit.py --root_dir path_to_saved_root_dir
-
-python timewarp/benchmark/generate_normal_benchmark.py --root_dir path_to_saved_root_dir
-
-python timewarp/benchmark/generate_shuffled_benchmark.py --root_dir path_to_saved_root_dir
+python timewarp/pref_data/merge_normal_captions.py --root_dir <output_path>
+python timewarp/pref_data/merge_shuffled_captions.py --root_dir <output_path>
+python timewarp/pref_data/generate_sft_explicit.py --root_dir <output_path>
+python timewarp/pref_data/generate_pref_explicit.py --root_dir <output_path> \
+    --shuffled_dir_name shuffled \
+    --annotation_dir_name shuffled_annotations \
+    --video_dir_name shuffled_videos
+python timewarp/benchmark/generate_normal_benchmark.py --root_dir <output_path>
+python timewarp/benchmark/generate_shuffled_benchmark.py --root_dir <output_path>
 ```
 
+## 📊 Model Checkpoints
 
-# Checkpoints
+| Method | LLaVA-Hound | Video-LLaMA3 | InternVideo |
+|--------|-------------|--------------|-------------|
+| SFT | [Coming Soon](#) | [Coming Soon](#) | [Coming Soon](#) |
+| Base-DPO | [Coming Soon](#) | [Coming Soon](#) | [Coming Soon](#) |
+| Combined (ours) | [Coming Soon](#) | [Coming Soon](#) | [Coming Soon](#) |
+| TimeWarp-Implicit | [Coming Soon](#) | [Coming Soon](#) | [Coming Soon](#) |
+| TimeWarp-Explicit | [Coming Soon](#) | [Coming Soon](#) | [Coming Soon](#) |
 
-| Methods                     | LLaVA-Hound | Video-LLaMA3 | InternVideo |
-|-----------------------------|-------------|--------------| ----------- |
-| SFT                         | [Link](#)   | [Link](#)    | [Link](#)   |
-| Base-DPO                    | [Link](#)   | [Link](#)    | [Link](#)   |
-| Combined (ours)             | [Link](#)   | [Link](#)    | [Link](#)   |
-| TimeWarp-Implicit (ours)    | [Link](#)   | [Link](#)    | [Link](#)   |
-| TimeWarp-Explicit (ours)    | [Link](#)   | [Link](#)    | [Link](#)   |
+## 📁 Repository Structure
 
-# Citing
-If you find TimeWarp useful, consider citing:
+```
+TimeWarp/
+├── setup_dataset.sh      # Preprocessing pipeline
+├── generate_data.sh       # Data generation pipeline
+└── timewarp/
+    ├── preprocess/        # Video preprocessing scripts
+    ├── pref_data/         # Preference data generation
+    └── benchmark/         # Benchmark generation
+```
+
+## 📚 Citation
+
+If you find TimeWarp useful, please cite:
 
 ```bibtex
-@article{patel2024tripletclip,
-    author = {Patel, Maitreya and Kusumba, Abhiram and Cheng, Sheng and Kim, Changhoon and Gokhale, Tejas and Baral, Chitta and Yang, Yezhou},
-    title = {TripletCLIP: Improving Compositional Reasoning of CLIP via Synthetic Vision-Language Negatives},
-    journal={Advances in neural information processing systems},
-    year = {2024},
+@article{timewarp2024,
+    title={TimeWarp: Enhancing Temporal Understanding of Video-LLMs},
+    author={Author names},
+    journal={Conference/Journal},
+    year={2024}
 }
 ```
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
