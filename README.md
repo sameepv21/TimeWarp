@@ -2,7 +2,7 @@
 
 <div align="center">
 
-[![arXiv](https://img.shields.io/badge/arXiv-2024.XXXXX-b31b1b.svg?style=flat-square)](https://arxiv.org/abs/2024.XXXXX)
+[![arXiv](https://img.shields.io/badge/arXiv-2025.03955-b31b1b.svg?style=flat-square)](https://arxiv.org/abs/2510.03955)
 [![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Models-blue?style=flat-square)](https://huggingface.co/time-warp)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 
@@ -24,7 +24,7 @@ pip install -r requirements.txt
 ## 📦 Dataset Setup
 
 ### Option 1: Download Preprocessed Data
-[![Hugging Face Dataset](https://img.shields.io/badge/%F0%9F%A4%97%20Dataset-TimeWarp-orange?style=flat-square)](https://huggingface.co/datasets/time-warp/timewarp-data)
+[![Hugging Face Dataset](https://img.shields.io/badge/%F0%9F%A4%97%20Dataset-TimeWarp-orange?style=flat-square)](https://huggingface.co/datasets/time-warp/timewarp)
 
 ### Option 2: Generate from Scratch
 
@@ -64,14 +64,16 @@ TimeWarp/
 If you find our work helpful, please consider citing:
 
 ```bibtex
-Coming Soon
+@misc{vani2025harnessingsyntheticpreferencedata,
+      title={Harnessing Synthetic Preference Data for Enhancing Temporal Understanding of Video-LLMs}, 
+      author={Sameep Vani and Shreyas Jena and Maitreya Patel and Chitta Baral and Somak Aditya and Yezhou Yang},
+      year={2025},
+      eprint={2510.03955},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2510.03955}, 
+}
 ```
-<!-- @article{timewarp2024,
-    title={Harnessing Synthetic Preference Data for Enhancing Temporal Understanding of Video-LLMs},
-    author={Your Name et al.},
-    journal={arXiv preprint arXiv:2024.XXXXX},
-    year={2024}
-} -->
 
 ## 🤝 Contributing
 
