@@ -64,14 +64,16 @@ TimeWarp/
 If you find our work helpful, please consider citing:
 
 ```bibtex
-Coming Soon
+@misc{vani2025harnessingsyntheticpreferencedata,
+      title={Harnessing Synthetic Preference Data for Enhancing Temporal Understanding of Video-LLMs}, 
+      author={Sameep Vani and Shreyas Jena and Maitreya Patel and Chitta Baral and Somak Aditya and Yezhou Yang},
+      year={2025},
+      eprint={2510.03955},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2510.03955}, 
+}
 ```
-<!-- @article{timewarp2024,
-    title={Harnessing Synthetic Preference Data for Enhancing Temporal Understanding of Video-LLMs},
-    author={Your Name et al.},
-    journal={arXiv preprint arXiv:2024.XXXXX},
-    year={2024}
-} -->
 
 ## 🤝 Contributing
 
